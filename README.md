@@ -6,80 +6,125 @@
 [![Lint](https://img.shields.io/badge/pycodestyle%20%7C%20pydocstyle-clean-1E7B7B?style=flat-square)](https://peps.python.org/pep-0008/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-A31F34?style=flat-square)](LICENSE)
 
-Supplementary code for an idealized, data-free theory of how storage
-exchange between conduits and matrix blocks changes the attenuation and
-phase lag of tides propagating into a coastal aquifer, and when that
-memory acts as a time-fractional medium.
+Supplementary code for an idealized, data-free model of how water exchange
+between conduits and matrix blocks changes the attenuation and phase lag
+of tides propagating into a coastal aquifer, and of when that exchange makes
+the aquifer behave as a time-fractional medium.
 
-**Authors:** Sandy H. S. Herho, Dasapta E. Irawan, Rusmawan Suwarman, Iwan P. Anwar, and Deny J. Puradimaja
+**Authors:** Sandy H. S. Herho, Dasapta E. Irawan, Iwan P. Anwar, Rusmawan Suwarman, and Deny J. Puradimaja
+
+## Animations
 
 <p align="center">
-  <img src="outputs/animations/anim01_breathing.gif" width="640" alt="matrix blocks breathing under the tide"><br>
-  One M2 cycle: conduit head (amber) and the head inside matrix blocks. Classical aquifer with the same storage in cyan.
+  <img src="outputs/animations/anim01_breathing.gif" width="720" alt="Conduit head and matrix-block head over one M2 tidal cycle">
 </p>
+<p align="center"><em>
+One M2 cycle in the reference aquifer. Top: conduit head (amber) and the
+classical aquifer with the same total storage (cyan). Bottom: head inside
+the matrix blocks.
+</em></p>
 
-| [ratio spectrum](outputs/animations/anim02_ratio.gif) | [nonlinear water table](outputs/animations/anim03_watertable.gif) |
-| :---: | :---: |
-| r(Ω) as matrix storage grows | classical and memory aquifers, ε = 0.2 |
+<p align="center">
+  <img src="outputs/animations/anim02_ratio.gif" width="720" alt="Ratio of phase lag to attenuation against frequency as matrix storage grows">
+</p>
+<p align="center"><em>
+Ratio of phase lag to attenuation, r = b/a, against frequency as the
+matrix storage ratio β sweeps from 0.01 to 10 000. Dots: the eight
+reference constituents. Faint curves: leakage.
+</em></p>
+
+<p align="center">
+  <img src="outputs/animations/anim03_watertable.gif" width="720" alt="Nonlinear water table over one tidal period, classical and with matrix memory">
+</p>
+<p align="center"><em>
+Unconfined aquifer over one tidal period, ε = 0.2: classical (top) and
+with matrix memory, β = 20 (bottom). White: period mean. Dashed: exact
+far-field mean.
+</em></p>
 
 ## Key results
 
-Each tidal constituent decays inland as $e^{-(a+ib)x}$ with
-$\kappa^2 = i\Omega\,c(\Omega)$, $c = 1 + \beta G$, $\beta = S_{im}/S_m$.
-The measured pair $(a, b)$ is exactly the complex storage capacity at that
+Each tidal constituent decays inland as exp[−(a + ib)x], with
+κ² = iΩ c(Ω), complex capacity c = 1 + βG, and β = S<sub>im</sub>/S<sub>m</sub>.
+The measured pair (a, b) is exactly the complex storage capacity at that
 frequency:
 
-$$a^2 - b^2 = -\Omega\,\mathrm{Im}\,c, \qquad 2ab = \Omega\,\mathrm{Re}\,c .$$
+```math
+a^2 - b^2 = -\Omega\,\mathrm{Im}\,c, \qquad 2ab = \Omega\,\mathrm{Re}\,c .
+```
 
-Leakage makes $a^2 - b^2$ constant in frequency; storage memory makes it
-a relaxation peak. One constituent alone can never tell them apart.
+Leakage makes a² − b² the same at every frequency, whereas storage memory
+makes it a relaxation peak. One constituent alone cannot tell them apart.
 
-For any passive storage exchange or leakage, $r = b/a \le 1$. For
-diffusive exchange with matrix blocks of any sizes,
+For any passive storage exchange or leakage, r = b/a ≤ 1. For diffusive
+exchange with matrix blocks of any sizes,
 
-$$r \ge \tan\!\left(\frac{\pi}{8} + \frac{\delta_{slab}}{2}\right) = 0.39798, \qquad \delta_{slab} = \min_u \arctan\frac{\sin 2u}{\sinh 2u} = -0.027868,$$
+```math
+r \ge \tan\left(\frac{\pi}{8} + \frac{\delta_s}{2}\right) = 0.39798,
+\qquad
+\delta_s = \min_u \arctan\frac{\sin 2u}{\sinh 2u} = -0.027868,
+```
 
-and $r > \tan(\pi/8) = 0.41421$ for cylindrical or spherical blocks.
+and r > tan(π/8) = 0.41421 for cylindrical or spherical blocks.
 
-Power-law block-size distributions $q s^{q-1}$ give, exactly up to
-exponentially small terms,
+A power-law distribution of block sizes, with density q s<sup>q−1</sup>, gives,
+up to exponentially small terms,
 
-$$G = q I_q (i\Omega)^{-q/2} - \frac{q}{1-q}(i\Omega)^{-1/2},$$
+```math
+G = q\,I_q\,(i\Omega)^{-q/2} - \frac{q}{1-q}\,(i\Omega)^{-1/2},
+```
 
-a time-fractional plateau of order $\gamma = 1 - q/2 \in (1/2, 1)$ with
-$r = \tan(\gamma\pi/4)$. Matrix diffusion cannot give an order below one
+a time-fractional plateau of order γ = 1 − q/2 between one half and one,
+with r = tan(γπ/4). Matrix diffusion cannot produce an order below one
 half.
 
-In the nonlinear unconfined aquifer the period mean of $H^2$ equals
-$1 + \varepsilon^2/2$ everywhere, and the mean water-table rise
-$(\varepsilon^2/4)(1 - e^{-2ax})$ carries attenuation only.
+In the nonlinear unconfined aquifer, the period mean of H² equals
+1 + ε²/2 everywhere, and the mean water-table rise (ε²/4)(1 − e<sup>−2ax</sup>)
+depends on attenuation alone.
 
-| reference aquifer (β = 20, τ = 1.50 d) | value |
+| Reference aquifer (β = 20, τ = 1.50 d) | Value |
 | --- | --- |
 | r at M2, K1 | 0.493, 0.459 |
 | r at MSf, Sa | 0.820, 0.992 |
-| detection power vs leakage, M2 S2 K1 O1, 30 d | λ = 5.5e3 |
-| weak memory β = 0.2 (r ≈ 0.97), same record | λ = 34.5, power 0.998 |
-| switch-on transient of a Caputo medium, γ = 0.75 | decays as t^-1.375 |
+| Noncentrality against leakage, M2 S2 K1 O1, 30 d | 5.5 × 10³ |
+| Weak memory, β = 0.2 (r ≈ 0.97), same record | 34.5, power 0.998 |
+| Switch-on transient of a Caputo medium, γ = 0.75 | decays as t<sup>−1.375</sup> |
 
 ## Verification
 
-| check | result |
+| Check | Result |
 | --- | --- |
-| dual porosity vs exact, spatial orders | 1.96, 1.98, 2.00, 2.00 |
-| BDF2 temporal orders | 1.98 to 2.00 |
-| L1 orders, γ = 0.25, 0.5, 0.75 (theory 2 - γ) | 1.72, 1.49, 1.25 |
-| Kramers-Kronig, slab / cylinder / sphere, max abs | 9.2e-12, 9.2e-12, 9.7e-12 |
-| power-law quadrature vs closed form | 7e-16 to 6e-15 |
-| Caputo exact solution at t = 0 | -2.8e-17 |
-| nonlinear first-harmonic correction, slope (theory 2) | 2.000 |
-| H² invariant, classical / memory | 5.7e-13, 6.4e-8 |
+| Dual porosity against exact solution, spatial orders | 1.96, 1.98, 2.00, 2.00 |
+| BDF2, temporal orders | 1.98 to 2.00 |
+| L1 scheme, orders for γ = 0.25, 0.5, 0.75 (theory 2 − γ) | 1.72, 1.49, 1.25 |
+| Kramers-Kronig, slab, cylinder, sphere (max abs error) | 9.2e-12, 9.2e-12, 9.7e-12 |
+| Power-law quadrature against closed form | 7e-16 to 6e-15 |
+| Exact Caputo solution at t = 0 | −2.8e-17 |
+| Nonlinear correction to the fundamental, slope (theory 2) | 2.000 |
+| Invariant of H², classical and memory | 5.7e-13, 6.4e-8 |
 
 Full residuals are in `outputs/reports/verification.txt`.
 
+## Figures
+
+All figures are in `outputs/figures` as vector PDF and 600 dpi PNG, and the
+data behind every panel are in `outputs/data` as CSV.
+
+| File | Content |
+| --- | --- |
+| `fig00_schematic` | Geometry, control-volume diagram, and matrix-block detail |
+| `fig01_capacity` | Matrix transfer functions for several block shapes |
+| `fig02_ratio` | Ratio spectrum for memory, fractional, and leaky aquifers |
+| `fig03_discriminant` | What each constituent measures, and apparent diffusivities |
+| `fig04_bound` | The half-order bound and the fractional plateau |
+| `fig05_timedomain` | Time-domain solutions against the frequency-domain theory |
+| `fig06_nonlinear` | Nonlinear unconfined aquifer and the invariant |
+| `fig07_information` | Detectability of memory against leakage |
+| `fig08_verification` | Convergence and consistency tests |
+
 ## Run
 
-```
+```bash
 pip install -r requirements.txt
 python scripts/run_all.py
 ```
@@ -101,8 +146,8 @@ outputs/     figures (PDF, 600 dpi PNG), animations (GIF),
 ## Limitations
 
 The reference parameters are illustrative values for a karstic limestone
-aquifer, not measurements, and no field record is used. The model is one
-dimensional with a vertical coastline, uniform matrix geometry, and no
+aquifer, not measurements, and no field record is used. The model is
+one-dimensional, with a vertical coastline, uniform matrix geometry, and no
 density, seepage-face, or tidal-loading effects; ratios above one, which
 geometry can produce, are outside its scope. The identifiability study
 assumes white noise and exact coastal records, so its thresholds are
