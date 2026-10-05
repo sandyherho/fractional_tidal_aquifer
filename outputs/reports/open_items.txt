@@ -1,0 +1,44 @@
+Open items and negative results
+===============================
+
+what the ratio alone cannot do
+------------------------------
+  A single constituent never distinguishes storage memory from leakage
+  or from a time-fractional medium; each reproduces any pair with b <=
+  a exactly. The discriminant is the frequency dependence: a^2 - b^2
+  is frequency independent for leakage and a relaxation for memory,
+  and the two diverge most at long periods. Long-period constituents
+  are, however, the ones most contaminated by weather and river stage
+  in real records.
+
+a claim that had to be corrected
+--------------------------------
+  The expectation that matrix diffusion is bounded by the half-order
+  phase, r >= tan(pi/8), holds for cylinders and spheres but not for
+  slabs: planar blocks undershoot by delta_slab/2 in theta because of
+  the reflected wave at the block centre. The bound reported is
+  therefore tan(pi/8 + delta_slab/2).
+
+ratios above one
+----------------
+  Neither storage exchange nor leakage can produce r > 1. Wedge-shaped
+  or finite aquifers, sloping beaches and the finite depth of
+  unconfined aquifers can, and none of these is included here. A field
+  ratio above one is evidence for geometry, not memory.
+
+assumptions carried by the whole construction
+---------------------------------------------
+  One horizontal dimension; a vertical coastline with a prescribed
+  head; uniform matrix geometry along x; linear storage exchange with
+  the matrix even in the nonlinear runs; no density effects, no
+  seepage face, no capillary fringe, no aquifer loading by the tide.
+  The identifiability study assumes white noise, exact coastal records
+  and correctly specified constituents, so its detection thresholds
+  are optimistic.
+
+not attempted
+-------------
+  Calibration against field records; two-dimensional or layered
+  aquifers; leakage and memory acting together; the influence of
+  pumping; seawater intrusion.
+

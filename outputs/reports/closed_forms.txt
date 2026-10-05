@@ -1,0 +1,97 @@
+Closed forms
+============
+
+model
+-----
+  Confined aquifer, mobile storage S_m, matrix storage S_im,
+  transmissivity T. Per constituent, i omega (S_m + S_im G) H = T H''.
+  Dimensionless: Omega = omega tau, tau = ell^2/D_im, c = 1 + beta G,
+  beta = S_im/S_m, x_* = sqrt(T tau/S_m), kappa^2 = i Omega c, kappa =
+  a + i b. Slab G = tanh z/z, cylinder 2 I_1(z)/(z I_0(z)), sphere 3(z
+  coth z - 1)/z^2, z = sqrt(i Omega).
+
+identities
+----------
+  a^2 - b^2 = -Omega Im c and 2ab = Omega Re c, exactly. One
+  constituent therefore measures the complex capacity at its
+  frequency. r = b/a = tan(pi/4 + arg(c)/2). The classical slope
+  factor D_a/D_b equals r^2. Leakage gives c = 1 - i lambda/Omega, so
+  a^2 - b^2 = lambda is the same at every frequency and Re c = 1;
+  storage memory gives a relaxation peak in -Im c and a step in Re c
+  from 1 + beta to 1.
+
+single-constituent equivalence
+------------------------------
+  Any pair (a, b) with 0 <= b <= a is reproduced exactly by a leaky
+  aquifer with (kappa x)^2 = i Omega s + l, l = (ax)^2 - (bx)^2, s = 2
+  (ax)(bx)/Omega, and exactly by a Weyl time-fractional medium of
+  order gamma = 4 arctan(r)/pi. A single constituent cannot identify
+  the mechanism; the misfit of the leaky fit to one synthetic memory
+  constituent is 1.3e-26 (round-off).
+
+bounds on r
+-----------
+  Every G here is a positive superposition of Debye terms, so arg c
+  lies in [-pi/2, 0] and r <= 1; leakage also gives r <= 1. A ratio
+  above one cannot come from storage exchange or leakage. For the
+  slab, arg G + pi/4 = arctan(sin 2u / sinh 2u), u = sqrt(Omega/2);
+  its minimum is delta_slab = -0.027867679199 at u = 1.963301157840
+  (Omega = 7.7091028728). Hence for any mixture of slabs, of any sizes
+  and diffusivities, r >= tan(pi/8 + delta_slab/2) = 0.397981687008.
+  For cylinders and spheres the large-Omega correction to G is
+  +i/Omega and +3i/Omega, so arg G approaches -pi/4 from above and r >
+  tan(pi/8) = 0.414213562373. For a single slab the half-order band is
+  1 << Omega << beta^2.
+
+power-law block sizes
+---------------------
+  Volume fraction density q s^(q-1) over relative half-thickness s in
+  (0, 1]. For Omega >> 1, G = q I_q (i Omega)^(-q/2) - q/(1 - q) (i
+  Omega)^(-1/2) up to exponentially small terms, I_q = int_0^inf
+  w^(q-2) tanh w dw. In the band where the first term dominates both
+  the second and the mobile storage, the aquifer is a time-fractional
+  medium of order 1 - q/2 in (1/2, 1). Matrix diffusion alone cannot
+  produce an order below one half.
+
+  q    | I_q          | plateau order 1 - q/2 | ratio tan(gamma pi/4)
+  ----------------------------------------------------------------
+  0.20 |  6.050726271 |                 0.900 | 0.854081
+  0.40 |  3.974894695 |                 0.800 | 0.726543
+  0.50 |  3.811125882 |                 0.750 | 0.668179
+  0.60 |  3.980189021 |                 0.700 | 0.612801
+  0.80 |  6.066961300 |                 0.600 | 0.509525
+
+reference aquifer, per constituent
+----------------------------------
+  name | period (h) | Omega   |   a    |   b    |   r    | gamma_eff | D_a, D_b (T/S_m) | 1/a (m)
+  --------------------------------------------------------------------------------------------
+  M2   |    12.4206 | 18.2019 |  8.910 |  4.388 | 0.4925 |    0.5827 | 0.1147, 0.4727  |   1277.4
+  S2   |    12.0000 | 18.8399 |  8.994 |  4.443 | 0.4940 |    0.5842 | 0.1164, 0.4772  |   1265.4
+  K1   |    23.9345 |  9.4457 |  7.544 |  3.463 | 0.4590 |    0.5479 | 0.0830, 0.3939  |   1508.7
+  O1   |    25.8193 |  8.7562 |  7.417 |  3.379 | 0.4555 |    0.5442 | 0.0796, 0.3835  |   1534.5
+  MSf  |   354.3671 |  0.6380 |  2.788 |  2.286 | 0.8200 |    0.8745 | 0.0410, 0.0610  |   4082.2
+  Mm   |   661.3112 |  0.3419 |  1.985 |  1.782 | 0.8977 |    0.9315 | 0.0434, 0.0538  |   5733.6
+  Ssa  |  4382.9052 |  0.0516 |  0.742 |  0.730 | 0.9838 |    0.9896 | 0.0469, 0.0484  |  15341.4
+  Sa   |  8765.8128 |  0.0258 |  0.523 |  0.518 | 0.9918 |    0.9948 | 0.0472, 0.0480  |  21782.3
+
+switch-on transient of a time-fractional medium
+-----------------------------------------------
+  For D_t^gamma h = h_xx from rest with h(0,t) = sin(Omega t), the
+  solution is the Weyl periodic state Im exp(i Omega t - (i
+  Omega)^(gamma/2) x) minus (1/pi) int_0^inf exp(-rho t) Omega/(rho^2
+  + Omega^2) Im exp(-rho^(gamma/2) e^(i pi gamma/2) x) d rho. The
+  second term decays as x sin(pi gamma/2) Gamma(1 + gamma/2)/(pi
+  Omega) t^(-1 - gamma/2). For gamma = 0.75 the exponent is -1.375
+  against -1.5 for classical diffusion; the prefactor ratio is
+  0.821249 against 0.886227.
+
+nonlinear unconfined aquifer
+----------------------------
+  For dH/dt + beta d<m>/dt = (1/2) d^2(H^2)/dx^2 with H(0,t) = 1 + eps
+  cos(Omega t) and no flux inland, the period mean of H^2 equals 1 +
+  eps^2/2 at every x in any periodic state, for any beta, geometry and
+  eps. At second order the mean rise is (eps^2/4)(1 - exp(-2ax)) with
+  a the linear attenuation rate: the overheight carries attenuation
+  only, not the phase lag. The far-field rise is sqrt(1 + eps^2/2) - 1
+  = eps^2/4 - eps^4/32 + ...
+

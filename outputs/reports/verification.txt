@@ -1,0 +1,64 @@
+Numerical verification
+======================
+
+independent checks
+------------------
+  Frequency-domain closed forms are checked against time-domain
+  solvers that share no code path with them: a dual-porosity
+  finite-difference model with resolved matrix diffusion (BDF2), an L1
+  solver for the Caputo equation, and a Newton-BDF2 solver for the
+  nonlinear unconfined problem. The transfer functions are checked for
+  causality by Kramers-Kronig reconstruction, and the power-law
+  quadrature against its closed-form asymptote.
+
+measured residuals
+------------------
+  dual porosity, periodic orbit vs exact, dx = 0.05, 0.025, 0.0125, 0.00625, 0.003125
+      mobile max error: 1.197e-02, 3.075e-03, 7.774e-04, 1.946e-04, 4.866e-05
+      matrix max error: 1.197e-02, 3.075e-03, 7.774e-04, 2.092e-04, 5.513e-05
+      observed orders: 1.9611, 1.9840, 1.9982, 1.9996
+  BDF2 from the discrete periodic orbit, six M2 periods:
+      max error: 4.955e-03, 1.256e-03, 3.144e-04, 7.901e-05, 1.980e-05, 4.957e-06
+      observed orders: 1.9803, 1.9980, 1.9923, 1.9962, 1.9982
+  L1 manufactured solution, gamma = 0.25: orders 1.6776, 1.6920, 1.7031, 1.7117, 1.7186 (theory 1.75)
+  L1 manufactured solution, gamma = 0.5: orders 1.4713, 1.4805, 1.4866, 1.4907, 1.4935 (theory 1.50)
+  L1 manufactured solution, gamma = 0.75: orders 1.2368, 1.2429, 1.2461, 1.2478, 1.2487 (theory 1.25)
+  Kramers-Kronig, slab        max abs error 9.206e-12
+  Kramers-Kronig, cylinder    max abs error 9.213e-12
+  Kramers-Kronig, sphere      max abs error 9.671e-12
+  Kramers-Kronig, first_order max abs error 9.206e-12
+  Kramers-Kronig, powerlaw    max abs error 9.013e-08
+  power-law quadrature vs closed form, q = 0.3: 5.552e-15 (Omega > 1e3)
+  power-law quadrature vs closed form, q = 0.5: 6.690e-16 (Omega > 1e3)
+  power-law quadrature vs closed form, q = 0.8: 3.220e-15 (Omega > 1e3)
+  nonlinear first harmonic vs linear BDF2 orbit, eps = 0.0125, 0.025, 0.05, 0.1, 0.2
+      deviation / eps: 1.378e-05, 5.514e-05, 2.206e-04, 8.828e-04, 3.539e-03
+      observed slopes (theory 2): 2.0001, 2.0002, 2.0008, 2.0033
+
+time-domain runs (figure 5)
+---------------------------
+  dual porosity from rest, M2 + K1, last 4 days, max |h - exact| 4.655e-04 m
+  harmonic analysis, max error in a plus max error in b 1.897e-02 (1/x_*), fit rms 3.235e-07 m
+  Caputo from rest, first six periods, L1 (128 per period) vs exact: 1.989e-03
+  switch-on transient, Richardson L1 vs exact, max relative error for 3 <= t <= 60.0: 4.024e-02
+  exact solution at t = 0 (Weyl part + transient) at x = 1: -2.776e-17
+
+nonlinear runs (figure 6)
+-------------------------
+  mem_0.2 : invariant residual 6.43e-08, far-field mean minus sqrt(1+eps^2/2) -3.56e-09, Newton iterations <= 5
+  cls_0.2 : invariant residual 5.65e-13, far-field mean minus sqrt(1+eps^2/2) -3.39e-08, Newton iterations <= 5
+  mem_0.1 : invariant residual 3.95e-09, far-field mean minus sqrt(1+eps^2/2) -6.62e-09, Newton iterations <= 4
+  mem_0.3 : invariant residual 3.02e-07, far-field mean minus sqrt(1+eps^2/2) 6.43e-08, Newton iterations <= 5
+  The memory runs approach the invariant more slowly than the
+  classical run because the matrix relaxes on its own time scale; the
+  classical residual reaches round-off.
+
+reading the numbers
+-------------------
+  The L1 orders approach 2 - gamma from below as the step decreases,
+  as expected for its truncation error. The Kramers-Kronig errors of
+  about 1e-11 are set by the finite frequency window; the larger
+  power-law value reflects the coarser grid used for that more costly
+  function. The harmonic-analysis error includes the spatial
+  discretization of the 600-node run.
+

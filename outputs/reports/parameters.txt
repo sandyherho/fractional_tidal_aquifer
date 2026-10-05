@@ -1,0 +1,42 @@
+Symbols, units, and reference values
+====================================
+
+reference aquifer (illustrative, not calibrated)
+------------------------------------------------
+  T = 0.05 m^2 s^-1, S_m = 5e-05, S_im = 0.001, beta = 20
+  ell = 0.5 m, D_im = 1.93e-06 m^2 s^-1, tau = 129533.7 s = 1.4992 d
+  x_* = sqrt(T tau / S_m) = 11381.3 m
+  head noise 10 mm in the tidal bands, 50 mm above two days; logging every 600 s
+
+constituents (period, illustrative coastal amplitude, noise)
+------------------------------------------------------------
+  M2      12.420601 h   0.50 m    10 mm
+  S2      12.000000 h   0.20 m    10 mm
+  K1      23.934470 h   0.30 m    10 mm
+  O1      25.819342 h   0.20 m    10 mm
+  MSf    354.367067 h   0.02 m    50 mm
+  Mm     661.311166 h   0.02 m    50 mm
+  Ssa   4382.905209 h   0.03 m    50 mm
+  Sa    8765.812770 h   0.08 m    50 mm
+
+constituent sets and Rayleigh lengths
+-------------------------------------
+  M2           M2  (1.00 d)
+  +S2 K1 O1    M2, S2, K1, O1  (14.77 d)
+  +MSf Mm      M2, S2, K1, O1, MSf, Mm  (27.55 d)
+  +Ssa Sa      M2, S2, K1, O1, MSf, Mm, Ssa, Sa  (365.26 d)
+
+provenance
+----------
+  The parameter values are round numbers chosen to sit in a plausible
+  range for a karstic limestone coastal aquifer with
+  decimetre-to-metre matrix blocks. They are not measurements and no
+  site is represented. Constituent periods are the standard
+  astronomical values; amplitudes are illustrative.
+
+what the results do not depend on
+---------------------------------
+  The identities for a^2 - b^2 and 2ab, the bound r <= 1, the slab
+  floor, the power-law plateau orders, the H^2 invariant and the
+  attenuation-only overheight hold for any parameter values.
+
