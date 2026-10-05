@@ -12,8 +12,8 @@ license = { file = "LICENSE" }
 authors = [
     { name = "Sandy H. S. Herho" },
     { name = "Dasapta E. Irawan" },
-    { name = "Rusmawan Suwarman" },
     { name = "Iwan P. Anwar" },
+    { name = "Rusmawan Suwarman" },
     { name = "Deny J. Puradimaja" }
 ]
 keywords = ["coastal aquifer", "tidal method", "fractional calculus",
